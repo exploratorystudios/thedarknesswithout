@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Host</title>
+</head>
+<body>
+    <h1>Audio Files</h1>
+    <ul id="audio-list"></ul>
+    
+    <script>
+        async function fetchAudioFiles() {
+            try {
+                const response = await fetch("audio/");
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, "text/html");
+                const links = Array.from(doc.querySelectorAll("a"));
+                
+                const audioList = document.getElementById("audio-list");
+                links.forEach(link => {
+                    const href = link.getAttribute("href");
+                    if (href.endsWith(".mp3") || href.endsWith(".wav") || href.endsWith(".ogg")) {
+                        const listItem = document.createElement("li");
+                        const audio = document.createElement("audio");
+                        audio.controls = true;
+                        audio.src = `audio/${href}`;
+                        
+                        const directLink = document.createElement("a");
+                        directLink.href = `audio/${href}`;
+                        directLink.textContent = href;
+                        directLink.style.marginLeft = "10px";
+                        
+                        listItem.appendChild(audio);
+                        listItem.appendChild(directLink);
+                        audioList.appendChild(listItem);
+                    }
+                });
+            } catch (error) {
+                console.error("Error fetching audio files:", error);
+            }
+        }
+        
+        fetchAudioFiles();
+    </script>
+</body>
+</html>
