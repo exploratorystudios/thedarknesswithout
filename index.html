@@ -7,49 +7,175 @@
 </head>
 <body>
     <h1>Audio Library</h1>
-    <div id="audio-list">Loading...</div>
-
-    <script>
-        // Replace with your GitHub username and repository name
-        const username = 'exploratorystudios';
-        const repo = 'https://github.com/exploratorystudios/thedarknesswithout/edit/main/index.html';
-        const branch = 'main'; // or 'gh-pages' if you're using that branch for GitHub Pages
-
-        // GitHub API URL to fetch contents of the 'audio' directory
-        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/audio?ref=${branch}`;
-
-        // Function to fetch and display audio files
-        async function fetchAudioFiles() {
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const files = await response.json();
-                const audioList = document.getElementById('audio-list');
-                audioList.innerHTML = '';
-
-                files.forEach(file => {
-                    if (file.type === 'file' && /\.(mp3|ogg|wav)$/i.test(file.name)) {
-                        const audioItem = document.createElement('div');
-                        const audioTitle = document.createElement('p');
-                        audioTitle.textContent = file.name;
-                        const audioPlayer = document.createElement('audio');
-                        audioPlayer.controls = true;
-                        audioPlayer.src = `https://${username}.github.io/${repo}/audio/${file.name}`;
-                        audioItem.appendChild(audioTitle);
-                        audioItem.appendChild(audioPlayer);
-                        audioList.appendChild(audioItem);
-                    }
-                });
-            } catch (error) {
-                console.error('Error fetching audio files:', error);
-                document.getElementById('audio-list').textContent = 'Failed to load audio files.';
-            }
-        }
-
-        // Fetch audio files on page load
-        fetchAudioFiles();
-    </script>
+    <ul>
+        <li>
+            <p>The Darkness Without Chapter 1</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 2</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 3</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 4</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 5</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_5.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 6</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_6.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 7</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_7.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 8</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_8.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 9</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_9.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 10</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_10.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 11</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_11.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 12</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_12.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 13</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_13.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 14</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_14.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 15</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_15.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 16</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_16.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 17</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_17.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 18</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_18.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 19</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_19.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 20</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_20.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 21</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_21.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 22</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_22.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 23</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_23.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        <li>
+            <p>The Darkness Without Chapter 24</p>
+            <audio controls>
+                <source src="audio/The_Darkness_Without_Chapter_24.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+    </ul>
 </body>
 </html>
