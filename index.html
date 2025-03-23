@@ -3,45 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Host</title>
+    <title>Audio Library</title>
 </head>
 <body>
-    <h1>Audio Files</h1>
-    <ul id="audio-list"></ul>
-    
+    <h1>Audio Library</h1>
+    <div id="audio-list">Loading...</div>
+
     <script>
+        // Replace with your GitHub username and repository name
+        const username = 'your-username';
+        const repo = 'your-repo';
+        const branch = 'main'; // or 'gh-pages' if you're using that branch for GitHub Pages
+
+        // GitHub API URL to fetch contents of the 'audio' directory
+        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/audio?ref=${branch}`;
+
+        // Function to fetch and display audio files
         async function fetchAudioFiles() {
             try {
-                const response = await fetch("audio/");
-                const text = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(text, "text/html");
-                const links = Array.from(doc.querySelectorAll("a"));
-                
-                const audioList = document.getElementById("audio-list");
-                links.forEach(link => {
-                    const href = link.getAttribute("href");
-                    if (href.endsWith(".mp3") || href.endsWith(".wav") || href.endsWith(".ogg")) {
-                        const listItem = document.createElement("li");
-                        const audio = document.createElement("audio");
-                        audio.controls = true;
-                        audio.src = `audio/${href}`;
-                        
-                        const directLink = document.createElement("a");
-                        directLink.href = `audio/${href}`;
-                        directLink.textContent = href;
-                        directLink.style.marginLeft = "10px";
-                        
-                        listItem.appendChild(audio);
-                        listItem.appendChild(directLink);
-                        audioList.appendChild(listItem);
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const files = await response.json();
+                const audioList = document.getElementById('audio-list');
+                audioList.innerHTML = '';
+
+                files.forEach(file => {
+                    if (file.type === 'file' && /\.(mp3|ogg|wav)$/i.test(file.name)) {
+                        const audioItem = document.createElement('div');
+                        const audioTitle = document.createElement('p');
+                        audioTitle.textContent = file.name;
+                        const audioPlayer = document.createElement('audio');
+                        audioPlayer.controls = true;
+                        audioPlayer.src = `https://${username}.github.io/${repo}/audio/${file.name}`;
+                        audioItem.appendChild(audioTitle);
+                        audioItem.appendChild(audioPlayer);
+                        audioList.appendChild(audioItem);
                     }
                 });
             } catch (error) {
-                console.error("Error fetching audio files:", error);
+                console.error('Error fetching audio files:', error);
+                document.getElementById('audio-list').textContent = 'Failed to load audio files.';
             }
         }
-        
+
+        // Fetch audio files on page load
         fetchAudioFiles();
     </script>
 </body>
